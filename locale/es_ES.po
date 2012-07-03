@@ -1,0 +1,11 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:party.party:"
+msgid ""
+"There is another party with the same VAT.\n"
+"The VAT of the party must be unique!"
+msgstr ""
+"Hay otro tercero con el mismo CIF/NIF.\n"
+"El número del CIF/NIF debe ser único."
