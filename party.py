@@ -3,18 +3,21 @@
 #the full copyright notices and license terms.
 
 from trytond.model import ModelView, ModelSQL
+from trytond.pool import PoolMeta
 
-class Party(ModelSQL, ModelView):
+__all__ = ['Party']
+__metaclass__ = PoolMeta
+
+class Party:
     'Party'
-    _name = 'party.party'
-    _description = __doc__
+    __name__ = 'party.party'
 
-    def __init__(self):
-        super(Party, self).__init__()
-        self._sql_constraints.extend([
+    @classmethod
+    def __setup__(cls):
+        super(Party, cls).__setup__()
+        cls._sql_constraints.extend([
             ('vat_uniq', 'UNIQUE(vat_number, vat_country)',
              'There is another party with the same VAT.\n'
              'The VAT of the party must be unique!')
         ])
 
-Party()
