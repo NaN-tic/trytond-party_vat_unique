@@ -33,14 +33,14 @@ setup(name='trytonzz_party_vat_unique',
     author='Zikzakmedia SL',
     author_email='zikzak@zikzakmedia.com',
     url='http://www.zikzakmedia.com',
-    download_url="https://bitbucket.org/zikzakmedia/trytonzz-party_vat_unique",
-    package_dir={'trytonzz.modules.party_vat_unique': '.'},
+    download_url="https://bitbucket.org/zikzakmedia/trytond-party_vat_unique",
+    package_dir={'trytond.modules.party_vat_unique': '.'},
     packages=[
-        'trytonzz.modules.party_vat_unique',
-        'trytonzz.modules.party_vat_unique.tests',
+        'trytond.modules.party_vat_unique',
+        'trytond.modules.party_vat_unique.tests',
     ],
     package_data={
-        'trytonzz.modules.party_vat_unique': info.get('xml', []) \
+        'trytond.modules.party_vat_unique': info.get('xml', []) \
                 + info.get('translation', []),
     },
     classifiers=[
@@ -63,9 +63,9 @@ setup(name='trytonzz_party_vat_unique',
     install_requires=requires,
     zip_safe=False,
     entry_points="""
-    [trytonzz.modules]
-    party_vat_unique = trytonzz.modules.party_vat_unique
+    [trytond.modules]
+    party_vat_unique = trytond.modules.party_vat_unique
     """,
     test_suite='tests',
-    test_loader='trytonzz.test_loader:Loader',
+    test_loader='trytond.test_loader:Loader',
 )
