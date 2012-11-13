@@ -27,20 +27,20 @@ for dep in info.get('depends', []):
 requires.append('trytond >= %s.%s, < %s.%s' %
         (major_version, minor_version, major_version, minor_version + 1))
 
-setup(name='trytond_party_vat_unique',
+setup(name='trytonzz_party_vat_unique',
     version=info.get('version', '0.0.1'),
     description='Tryton module to vat unique in Parties',
     author='Zikzakmedia SL',
     author_email='zikzak@zikzakmedia.com',
     url='http://www.zikzakmedia.com',
-    download_url="https://bitbucket.org/zikzakmedia/trytond-party_vat_unique",
-    package_dir={'trytond.modules.party_vat_unique': '.'},
+    download_url="https://bitbucket.org/zikzakmedia/trytonzz-party_vat_unique",
+    package_dir={'trytonzz.modules.party_vat_unique': '.'},
     packages=[
-        'trytond.modules.party_vat_unique',
-        'trytond.modules.party_vat_unique.tests',
+        'trytonzz.modules.party_vat_unique',
+        'trytonzz.modules.party_vat_unique.tests',
     ],
     package_data={
-        'trytond.modules.party_vat_unique': info.get('xml', []) \
+        'trytonzz.modules.party_vat_unique': info.get('xml', []) \
                 + info.get('translation', []),
     },
     classifiers=[
@@ -63,9 +63,9 @@ setup(name='trytond_party_vat_unique',
     install_requires=requires,
     zip_safe=False,
     entry_points="""
-    [trytond.modules]
-    party_vat_unique = trytond.modules.party_vat_unique
+    [trytonzz.modules]
+    party_vat_unique = trytonzz.modules.party_vat_unique
     """,
     test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
+    test_loader='trytonzz.test_loader:Loader',
 )
