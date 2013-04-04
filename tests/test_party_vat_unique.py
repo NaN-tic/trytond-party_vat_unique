@@ -23,12 +23,6 @@ class PartyVatUniqueTestCase(unittest.TestCase):
     def setUp(self):
         trytond.tests.test_tryton.install_module('party_vat_unique')
 
-    def test0005views(self):
-        '''
-        Test views.
-        '''
-        test_view('party_vat_unique')
-
     def test0006depends(self):
         '''
         Test depends.
