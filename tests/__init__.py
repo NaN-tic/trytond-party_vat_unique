@@ -3,3 +3,5 @@
 #the full copyright notices and license terms.
 
 from .test_party_vat_unique import suite
+
+__all__ = ['suite']
