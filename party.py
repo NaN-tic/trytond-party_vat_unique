@@ -4,8 +4,19 @@
 from trytond.pool import PoolMeta
 from trytond.model import Unique
 
-__all__ = ['PartyIdentifier']
+__all__ = ['Party', 'PartyIdentifier']
 __metaclass__ = PoolMeta
+
+
+class Party:
+    __name__ = 'party.party'
+
+    @classmethod
+    def copy(cls, parties, default=None):
+        if default is None:
+            default = {}
+        default['identifiers'] = None
+        return super(Party, cls).copy(parties, default=default)
 
 
 class PartyIdentifier:
