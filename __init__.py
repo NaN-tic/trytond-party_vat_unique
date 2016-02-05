@@ -6,5 +6,6 @@ from .party import *
 
 def register():
     Pool.register(
+        Party,
         PartyIdentifier,
         module='party_vat_unique', type_='model')
