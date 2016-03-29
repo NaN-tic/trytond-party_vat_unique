@@ -5,10 +5,10 @@ from trytond.pool import PoolMeta
 from trytond.model import Unique
 
 __all__ = ['Party', 'PartyIdentifier']
-__metaclass__ = PoolMeta
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
 
     @classmethod
@@ -20,6 +20,7 @@ class Party:
 
 
 class PartyIdentifier:
+    __metaclass__ = PoolMeta
     __name__ = 'party.identifier'
 
     @classmethod
