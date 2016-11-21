@@ -20,6 +20,7 @@ class PartyVatUniqueTestCase(ModuleTestCase):
         Identifier = pool.get('party.identifier')
 
         party = Party(name='test')
+        party.save()
 
         identifier = Identifier(party=party, code='ES47690558N',
             type='eu_vat')
@@ -29,10 +30,25 @@ class PartyVatUniqueTestCase(ModuleTestCase):
             type='eu_vat')
         with self.assertRaises(UserError):
             duplicated_identifier.save()
+
+    @with_transaction()
+    def test_identifier_unique_diferent_parties(self):
+        'Test Identifier uniqueness with diferent parties'
+        pool = Pool()
+        Party = pool.get('party.party')
+        Identifier = pool.get('party.identifier')
+
+        party = Party(name='test')
+        party.save()
+
+        identifier = Identifier(party=party, code='ES47690558N',
+            type='eu_vat')
+        identifier.save()
         # Test with diferent party
         new_party = Party(name='test')
         new_party.save()
-        duplicated_identifier.party = new_party
+        duplicated_identifier = Identifier(party=new_party, code='ES47690558N',
+            type='eu_vat')
         with self.assertRaises(UserError):
             duplicated_identifier.save()
 
