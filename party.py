@@ -19,3 +19,11 @@ class Party:
              'The VAT of the party must be unique!')
         ])
 
+    @classmethod
+    def copy(cls, parties, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default['vat_country'] = None
+        default['vat_number'] = None
+        return super(Party, cls).copy(parties, default=default)
