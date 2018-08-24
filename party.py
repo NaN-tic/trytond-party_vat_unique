@@ -7,8 +7,7 @@ from trytond.model import Unique
 __all__ = ['Party', 'PartyIdentifier']
 
 
-class Party:
-    __metaclass__ = PoolMeta
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
     @classmethod
@@ -19,8 +18,7 @@ class Party:
         return super(Party, cls).copy(parties, default=default)
 
 
-class PartyIdentifier:
-    __metaclass__ = PoolMeta
+class PartyIdentifier(metaclass=PoolMeta):
     __name__ = 'party.identifier'
 
     @classmethod
