@@ -10,3 +10,6 @@ def register():
         party.Party,
         party.PartyIdentifier,
         module='party_vat_unique', type_='model')
+    Pool.register(
+        party.PartyReplace,
+        module='party_vat_unique', type_='wizard')
