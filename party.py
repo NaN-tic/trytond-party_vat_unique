@@ -2,7 +2,9 @@
 # the top level of this repository contains the full copyright notices and
 # license terms.
 from trytond.pool import PoolMeta
-from trytond.model import Unique
+from trytond.model import Exclude
+from trytond import backend
+from sql.operators import Equal
 
 __all__ = ['Party', 'PartyIdentifier', 'PartyReplace']
 
@@ -22,13 +24,23 @@ class PartyIdentifier(metaclass=PoolMeta):
     __name__ = 'party.identifier'
 
     @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        super().__register__(module_name)
+        table = TableHandler(cls, module_name)
+
+        # Drop number_uniq constraint
+        table.drop_constraint('number_uniq')
+
+    @classmethod
     def __setup__(cls):
         super(PartyIdentifier, cls).__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
-            ('number_uniq', Unique(t, t.type, t.code),
-                'There is another code with the same number.\n'
-                'The code of the party must be unique!'),
+            ('number_excl', Exclude(t, (t.type, Equal), (t.code, Equal),
+                where=(t.type == 'eu_vat')),
+                'There is another Party VAT identifier with same code.\n'
+                'The Party VAT code must be unique!'),
         ]
 
     @staticmethod
