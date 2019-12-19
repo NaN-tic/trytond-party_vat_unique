@@ -2,7 +2,7 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.identifier:"
+msgctxt "model:ir.message,text:msg_vat_unique"
 msgid ""
 "There is another Party VAT identifier with same code.\n"
 "The Party VAT code must be unique!"
