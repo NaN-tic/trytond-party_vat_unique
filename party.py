@@ -38,9 +38,7 @@ class PartyIdentifier(metaclass=PoolMeta):
         t = cls.__table__()
         cls._sql_constraints += [
             ('number_excl', Exclude(t, (t.type, Equal), (t.code, Equal),
-                where=(t.type == 'eu_vat')),
-                'There is another Party VAT identifier with same code.\n'
-                'The Party VAT code must be unique!'),
+                where=(t.type == 'eu_vat')), 'party_vat_unique.msg_vat_unique'),
         ]
 
     @staticmethod
