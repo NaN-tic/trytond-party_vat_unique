@@ -6,7 +6,7 @@ from trytond.model import Exclude
 from trytond import backend
 from sql.operators import Equal
 
-__all__ = ['Party', 'PartyIdentifier', 'PartyReplace']
+__all__ = ['Party', 'PartyIdentifier']
 
 
 class Party(metaclass=PoolMeta):
@@ -43,15 +43,3 @@ class PartyIdentifier(metaclass=PoolMeta):
     @staticmethod
     def default_type():
         return 'eu_vat'
-
-
-class PartyReplace(metaclass=PoolMeta):
-    __name__ = 'party.replace'
-
-    @classmethod
-    def fields_to_replace(cls):
-        fields_to_replace = super(PartyReplace, cls).fields_to_replace()
-        pidentifier = ('party.identifier', 'party')
-        if pidentifier not in fields_to_replace:
-            fields_to_replace.append(pidentifier)
-        return fields_to_replace

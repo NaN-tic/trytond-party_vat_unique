@@ -33,23 +33,3 @@ Create a party2::
     >>> address2.street = "St sample 2, 15"
     >>> address2.city = "City 2"
     >>> address2.save()
-
-Try replace active party::
-
-    >>> replace = Wizard('party.replace', models=[party])
-    >>> replace.form.source = party
-    >>> replace.form.destination = party2
-    >>> replace.execute('replace')
-
-Check fields have been replaced::
-
-    >>> party.reload()
-    >>> party2.reload()
-    >>> len(party.identifiers) == 0
-    True
-    >>> len(party2.identifiers) == 2
-    True
-    >>> party.active == False
-    True
-    >>> party2.active == True
-    True
