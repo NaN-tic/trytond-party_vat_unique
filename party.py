@@ -6,8 +6,6 @@ from trytond.model import Exclude
 from trytond import backend
 from sql.operators import Equal
 
-__all__ = ['Party', 'PartyIdentifier']
-
 
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
