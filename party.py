@@ -3,7 +3,6 @@
 # license terms.
 from trytond.pool import PoolMeta
 from trytond.model import Exclude
-from trytond import backend
 from sql.operators import Equal
 
 __all__ = ['Party', 'PartyIdentifier']
@@ -26,7 +25,7 @@ class PartyIdentifier(metaclass=PoolMeta):
     @classmethod
     def __register__(cls, module_name):
         super().__register__(module_name)
-        table = backend.TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Drop number_uniq constraint
         table.drop_constraint('number_uniq')
