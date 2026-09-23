@@ -27,14 +27,17 @@ class PartyIdentifier(metaclass=PoolMeta):
 
         # Drop number_uniq constraint
         table.drop_constraint('number_uniq')
+        # Replaced by number_type_excl, which covers Spanish identifiers too.
+        table.drop_constraint('number_excl')
 
     @classmethod
     def __setup__(cls):
         super(PartyIdentifier, cls).__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
-            ('number_excl', Exclude(t, (t.type, Equal), (t.code, Equal),
-                where=(t.type == 'eu_vat')), 'party_vat_unique.msg_vat_unique'),
+            ('number_type_excl', Exclude(t, (t.type, Equal), (t.code, Equal),
+                where=t.type.in_(['es_cae', 'es_cif', 'es_dni', 'es_nie',
+                    'es_vat', 'eu_vat'])), 'party_vat_unique.msg_vat_unique'),
         ]
 
     @staticmethod
